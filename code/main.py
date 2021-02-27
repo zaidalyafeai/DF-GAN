@@ -103,6 +103,8 @@ def train(dataloader,netG,netD,text_encoder,optimizerG,optimizerD,state_epoch,ba
         for step, data in enumerate(dataloader, 0):
             
             imags, captions, cap_lens, class_ids, keys = prepare_data(data)
+            print(captions)
+            print(cap_lens)
             hidden = text_encoder.init_hidden(batch_size)
             # words_embs: batch_size x nef x seq_len
             # sent_emb: batch_size x nef

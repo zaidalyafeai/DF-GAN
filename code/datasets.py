@@ -229,9 +229,13 @@ class TextDataset(data.Dataset):
                              ixtoword, wordtoix], f, protocol=2)
                 print('Save to: ', filepath)
         else:
+            print('loading from ', filepath)
+            print(train_names)
             with open(filepath, 'rb') as f:
                 x = pickle.load(f)
                 train_captions, test_captions = x[0], x[1]
+                print(train_captions)
+                print(test_captions)
                 ixtoword, wordtoix = x[2], x[3]
                 del x
                 n_words = len(ixtoword)
