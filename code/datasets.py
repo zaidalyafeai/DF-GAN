@@ -155,7 +155,7 @@ class TextDataset(data.Dataset):
                     # and drops everything else
                     tokenizer = RegexpTokenizer(r'\w+')
                     tokens = tokenizer.tokenize(cap.lower())
-                    print(tokens)
+
                     # print('tokens', tokens)
                     if len(tokens) == 0:
                         print('cap', cap)
@@ -166,6 +166,7 @@ class TextDataset(data.Dataset):
                         t = t.encode('ascii', 'ignore').decode('ascii')
                         if len(t) > 0:
                             tokens_new.append(t)
+                    print(tokens_new)
                     all_captions.append(tokens_new)
                     cnt += 1
                     if cnt == self.embeddings_num:
