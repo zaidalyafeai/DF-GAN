@@ -145,7 +145,7 @@ class TextDataset(data.Dataset):
         for i in range(len(filenames)):
             cap_path = '%s/text/%s.txt' % (data_dir, filenames[i])
             with open(cap_path, "r") as f:
-                captions = f.read().split('\n')
+                captions = f.read().decode('utf8').split('\n')
                 cnt = 0
                 for cap in captions:
                     if len(cap) == 0:
@@ -155,6 +155,7 @@ class TextDataset(data.Dataset):
                     # and drops everything else
                     tokenizer = RegexpTokenizer(r'\w+')
                     tokens = tokenizer.tokenize(cap.lower())
+                    print(tokens)
                     # print('tokens', tokens)
                     if len(tokens) == 0:
                         print('cap', cap)
