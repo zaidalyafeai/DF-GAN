@@ -55,7 +55,7 @@ __C.GAN.CONDITION_DIM = 100
 __C.GAN.R_NUM = 2
 __C.GAN.B_ATTENTION = True
 __C.GAN.B_DCGAN = False
-
+__C.OUTPUT = ''
 
 __C.TEXT = edict()
 __C.TEXT.CAPTIONS_PER_IMAGE = 10
