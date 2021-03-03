@@ -112,8 +112,8 @@ def train(dataloader, cnn_model, rnn_model, batch_size,
 
             elapsed = time.time() - start_time
             print('| epoch {:3d} | {:5d}/{:5d} batches | ms/batch {:5.2f} | '
-                  's_loss {:5.2f} {:5.2f} | '
-                  'w_loss {:5.2f} {:5.2f}'
+                  's_loss {:5.5f} {:5.5f} | '
+                  'w_loss {:5.5f} {:5.5f}'
                   .format(epoch, step, len(dataloader),
                           elapsed * 1000. / UPDATE_INTERVAL,
                           s_cur_loss0, s_cur_loss1,
@@ -281,7 +281,7 @@ if __name__ == "__main__":
                 s_loss, w_loss = evaluate(dataloader_val, image_encoder,
                                           text_encoder, batch_size)
                 print('| end epoch {:3d} | valid loss '
-                      '{:5.2f} {:5.2f} | lr {:.5f}|'
+                      '{:5.5f} {:5.5f} | lr {:.5f}|'
                       .format(epoch, s_loss, w_loss, lr))
             print('-' * 89)
             if lr > cfg.TRAIN.ENCODER_LR/10.:

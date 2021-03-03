@@ -167,10 +167,8 @@ class TextDataset(data.Dataset):
                         if len(t) > 0:
                             tokens_new.append(t)
                     if len(tokens_new) == 0:
-                        print(captions)
-                        print(tokens)
-                        raise('Error')
-                    print('tok', tokens_new)
+                        raise('Error') 
+                    
                     all_captions.append(tokens_new)
                     cnt += 1
                     if cnt == self.embeddings_num:
