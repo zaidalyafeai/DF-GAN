@@ -168,6 +168,7 @@ class TextDataset(data.Dataset):
                             tokens_new.append(t)
                     if len(tokens) == 0:
                         print(tokens)
+                        raise('Error')
                     print('tok', tokens_new)
                     all_captions.append(tokens_new)
                     cnt += 1
