@@ -201,7 +201,6 @@ class TextDataset(data.Dataset):
         train_captions_new = []
         for t in train_captions:
             rev = []
-            print(t)
             for w in t:
                 if w in wordtoix:
                     rev.append(wordtoix[w])
@@ -213,7 +212,6 @@ class TextDataset(data.Dataset):
         test_captions_new = []
         for t in test_captions:
             rev = []
-            print(t)
             for w in t:
                 if w in wordtoix:
                     rev.append(wordtoix[w])
@@ -289,7 +287,8 @@ class TextDataset(data.Dataset):
         x = np.zeros((cfg.TEXT.WORDS_NUM, 1), dtype='int64')
         x_len = num_words
         if x_len < 1:
-            print(sent_caption)
+            print(sent_caption, sent_caption, self.captions[sent_ix])
+            print(self.captions)
             raise('error')
         if num_words <= cfg.TEXT.WORDS_NUM:
             x[:num_words, 0] = sent_caption
