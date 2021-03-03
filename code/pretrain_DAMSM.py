@@ -225,7 +225,7 @@ if __name__ == "__main__":
     now = datetime.datetime.now(dateutil.tz.tzlocal())
     timestamp = now.strftime('%Y_%m_%d_%H_%M_%S')
     output_dir = '%s/%s_%s_%s' % \
-        (cfg.OUTPUT,cfg.DATASET_NAME, cfg.CONFIG_NAME, timestamp)
+        (cfg.TRAIN.OUTPUT,cfg.DATASET_NAME, cfg.CONFIG_NAME, timestamp)
 
     model_dir = os.path.join(output_dir, 'Model')
     image_dir = os.path.join(output_dir, 'Image')
