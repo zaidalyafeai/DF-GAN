@@ -77,8 +77,8 @@ def train(dataloader, cnn_model, rnn_model, batch_size,
         hidden = rnn_model.init_hidden(batch_size)
         # words_emb: batch_size x nef x seq_len
         # sent_emb: batch_size x nef
-        print(cap_lens)
-        print(captions)
+        # print(cap_lens)
+        # print(captions)
         words_emb, sent_emb = rnn_model(captions, cap_lens, hidden)
 
         w_loss0, w_loss1, attn_maps = words_loss(words_features, words_emb, labels,

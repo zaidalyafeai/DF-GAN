@@ -201,18 +201,24 @@ class TextDataset(data.Dataset):
         train_captions_new = []
         for t in train_captions:
             rev = []
+            print(t)
             for w in t:
                 if w in wordtoix:
                     rev.append(wordtoix[w])
+                else:
+                    print('word not in vocab')
             # rev.append(0)  # do not need '<end>' token
             train_captions_new.append(rev)
 
         test_captions_new = []
         for t in test_captions:
             rev = []
+            print(t)
             for w in t:
                 if w in wordtoix:
                     rev.append(wordtoix[w])
+                else:
+                    print('word not in vocab')
             # rev.append(0)  # do not need '<end>' token
             test_captions_new.append(rev)
 
@@ -239,8 +245,8 @@ class TextDataset(data.Dataset):
             with open(filepath, 'rb') as f:
                 x = pickle.load(f)
                 train_captions, test_captions = x[0], x[1]
-                print(train_captions)
-                print(test_captions)
+                # print(train_captions)
+                # print(test_captions)
                 ixtoword, wordtoix = x[2], x[3]
                 del x
                 n_words = len(ixtoword)
@@ -315,7 +321,7 @@ class TextDataset(data.Dataset):
         sent_ix = random.randint(0, self.embeddings_num)
         new_sent_ix = index * self.embeddings_num + sent_ix
         caps, cap_len = self.get_caption(new_sent_ix)
-        print(caps, cap_len)
+        # print(caps, cap_len)
         return imgs, caps, cap_len, cls_id, key
 
 
