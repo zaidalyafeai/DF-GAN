@@ -166,7 +166,7 @@ class TextDataset(data.Dataset):
                         t = t.encode('ascii', 'ignore').decode('ascii')
                         if len(t) > 0:
                             tokens_new.append(t)
-                    if len(tokens) == 0:
+                    if len(tokens_new) == 0:
                         print(tokens)
                         raise('Error')
                     print('tok', tokens_new)
