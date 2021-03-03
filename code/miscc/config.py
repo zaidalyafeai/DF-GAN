@@ -19,7 +19,7 @@ __C.WORKERS = 6
 
 __C.RNN_TYPE = 'LSTM'   # 'GRU'
 __C.B_VALIDATION = False
-
+__C.loss = 'hinge'
 __C.TREE = edict()
 __C.TREE.BRANCH_NUM = 3
 __C.TREE.BASE_SIZE = 64
@@ -38,7 +38,7 @@ __C.TRAIN.FLAG = True
 __C.TRAIN.NET_E = ''
 __C.TRAIN.NET_G = ''
 __C.TRAIN.B_NET_D = True
-__C.TRAIN.OUTPUT = ''
+__C.TRAIN.NF = 32
 __C.TRAIN.SMOOTH = edict()
 __C.TRAIN.SMOOTH.GAMMA1 = 5.0
 __C.TRAIN.SMOOTH.GAMMA3 = 10.0
@@ -54,14 +54,14 @@ __C.GAN.Z_DIM = 100
 __C.GAN.CONDITION_DIM = 100
 __C.GAN.R_NUM = 2
 __C.GAN.B_ATTENTION = True
-__C.GAN.B_DCGAN = False
+__C.GAN.B_DCGAN = True
 
 
 __C.TEXT = edict()
 __C.TEXT.CAPTIONS_PER_IMAGE = 10
 __C.TEXT.EMBEDDING_DIM = 256
 __C.TEXT.WORDS_NUM = 18
-
+__C.TEXT.DAMSM_NAME = '../DAMSMencoders/coco/text_encoder200.pth'
 
 def _merge_a_into_b(a, b):
     """Merge config dictionary a into config dictionary b, clobbering the
@@ -70,9 +70,9 @@ def _merge_a_into_b(a, b):
     if type(a) is not edict:
         return
 
-    for k, v in a.iteritems():
+    for k, v in a.items():
         # a must specify keys that are in b
-        if not b.has_key(k):
+        if k not in b:
             raise KeyError('{} is not a valid config key'.format(k))
 
         # the types must match, too
