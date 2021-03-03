@@ -282,6 +282,9 @@ class TextDataset(data.Dataset):
         # pad with 0s (i.e., '<end>')
         x = np.zeros((cfg.TEXT.WORDS_NUM, 1), dtype='int64')
         x_len = num_words
+        if x_len < 1:
+            print(sent_caption)
+            raise('error')
         if num_words <= cfg.TEXT.WORDS_NUM:
             x[:num_words, 0] = sent_caption
         else:
@@ -312,6 +315,7 @@ class TextDataset(data.Dataset):
         sent_ix = random.randint(0, self.embeddings_num)
         new_sent_ix = index * self.embeddings_num + sent_ix
         caps, cap_len = self.get_caption(new_sent_ix)
+        print(caps, cap_len)
         return imgs, caps, cap_len, cls_id, key
 
 
